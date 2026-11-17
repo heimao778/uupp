@@ -186,7 +186,7 @@ function calcCustomResult(v, price) {
   const days = price / v.dailyBudget;
   const p = formatQuantity(percent);
   const d = formatQuantity(days);
-  const periodLabel = v.period === 'custom' ? `${formatNumber(v.periodDays)} 天` : PERIODS[v.period].label;
+  const periodLabel = v.period === 'custom' ? ` ${formatNumber(v.periodDays)} 天` : PERIODS[v.period].label;
   return {
     label: '占预算',
     value: p.text,

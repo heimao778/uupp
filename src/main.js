@@ -132,7 +132,7 @@ function renderHome() {
         <label class="price-label" for="price">商品价格</label>
         <div class="price-input">
           <span class="currency" aria-hidden="true">¥</span>
-          <input id="price" type="text" inputmode="decimal" autocomplete="off" placeholder="0.00"
+          <input id="price" name="price" type="text" inputmode="decimal" autocomplete="off" placeholder="0.00"
             value="${esc(state.price)}" aria-describedby="price-error" ${summary ? '' : 'disabled'} />
         </div>
         <p id="price-error" class="field-error" role="alert"></p>
@@ -141,7 +141,7 @@ function renderHome() {
       <section class="result" id="result" aria-live="polite"></section>
 
       <section class="save-row">
-        <input id="item-name" type="text" maxlength="40" placeholder="商品名称（选填）" value="${esc(state.name)}" aria-label="商品名称" />
+        <input id="item-name" name="item-name" type="text" maxlength="40" placeholder="商品名称（选填）" value="${esc(state.name)}" aria-label="商品名称" />
         <button type="button" id="save-btn" class="btn primary">保存记录</button>
       </section>
 
@@ -252,7 +252,7 @@ function renderSettings() {
       <div class="field${errors[f.key] ? ' has-error' : ''}">
         <label for="f-${f.key}">${f.label}</label>
         <div class="input-wrap">
-          <input id="f-${f.key}" data-field="${f.key}" type="text" inputmode="decimal" autocomplete="off"
+          <input id="f-${f.key}" name="${f.key}" data-field="${f.key}" type="text" inputmode="decimal" autocomplete="off"
             placeholder="${f.placeholder}" value="${esc(s[f.key])}" aria-invalid="${Boolean(errors[f.key])}"
             aria-describedby="e-${f.key}" />
           <span class="suffix">${f.unit}</span>
@@ -390,7 +390,7 @@ function recordItem(r) {
   const confirming = state.confirmDeleteId === r.id;
   const nameBlock = editing
     ? `<form class="rename" data-rename="${r.id}">
-        <input type="text" maxlength="40" value="${esc(r.name)}" aria-label="商品名称" />
+        <input type="text" name="record-name" maxlength="40" value="${esc(r.name)}" aria-label="商品名称" />
         <button type="submit" class="btn small primary">保存</button>
         <button type="button" class="btn small" data-cancel>取消</button>
       </form>`

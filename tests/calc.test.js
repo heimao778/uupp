@@ -62,6 +62,8 @@ describe('PRD 10.3 自定义预算模式', () => {
     expect(r.result.value).toBe('10');
     expect(r.result.unit).toBe('%');
     expect(r.result.details[0]).toBe('等效 3 天预算');
+    expect(r.result.details[1]).toBe('按 30 天预算 2,000 元计算');
+    expect(calculate('custom', { budget: '2000', period: 'month' }, '200').result.details[1]).toBe('按每月预算 2,000 元计算');
   });
 
   it.each([
